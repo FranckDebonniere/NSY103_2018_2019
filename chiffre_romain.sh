@@ -2,7 +2,21 @@
 
 #initialisation des variables
 
-read -p "tapez votre chiffre : " -s chiffre_arabe
+
+
+read -p "tapez votre chiffre (max 8 caractères) : " -s chiffre_arabe
+
+
+
+while (( ${#chiffre_arabe}>8))
+do
+	if  (( ${#chiffre_arabe}>8));then
+	echo La longueur de votre chiffre est supérieure à 8 caractères
+	read -p "tapez votre chiffre (max 8 caractères) : " -s chiffre_arabe
+
+fi
+done
+
 
 chiffre_romain=""
 chiffre_tampon=0
