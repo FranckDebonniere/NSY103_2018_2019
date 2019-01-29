@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#initialisation des variables
-
 echo "Si vous souhaitez rentrer un chiffre manuellement taper - 1 -"
 echo "Si vous souhaitez qu'un chiffre soit donné automatiquement taper - 2 - (entrer) :"
 read  choix
@@ -61,8 +59,7 @@ echo "le chiffre arabe selectionné automatiqement est : $chiffre_arabe"
 
 fi
 
-
-
+#initialisation des variables
 chiffre_romain=""
 chiffre_tampon=0
  
