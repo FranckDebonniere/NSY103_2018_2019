@@ -2,11 +2,20 @@
 
 #initialisation des variables
 
+echo "Si vous souhaitez rentrer un chiffre manuellement taper - 1 -"
+echo "Si vous souhaitez qu'un chiffre soit donné automatiquement taper - 2 - (entrer) :"
+read  choix
+
+if [ $choix == 1 ];
+then
 
 
 read -p "tapez votre chiffre (max 8 caractères) : " chiffre_arabe
 
-
+while [[ ${chiffre} =~ ^[0-9]+$  ]];
+do 
+	read -p 'saisissez uniquement des entiers :' chiffre_arabe
+done
 
 while (( ${#chiffre_arabe}>8))
 do
@@ -17,12 +26,40 @@ do
 fi
 done
 
+elif [ $choix == 2 ]
+then
+
+lg_chiffre_arabe="${1:-8}"
+chiffre_arabe=""
+
+#Liste des caractères utilisables pour le mot de passe.
+caracteres="0123456789"
+
+#Nombre de caracteres dans la liste de ceux autorises.
+nb_caracteres=${#caracteres}
+
+i=1
+
+while [ $i -le "$lg_chiffre_arabe" ]
+do
+        #tirer une valeur aleatoire entre 1 et le nombre de caracteres dans la liste autorisee.
+        n=$((1 + ${RANDOM} % ${nb_caracteres}))
+
+        #Ajouter dans le mot de passe le n-ieme caractere.
+        chiffre_arabe="${chiffre_arabe}${caracteres:$n:1}"
+
+        i=$((i + 1))
+done
+
+echo "le chiffre arabe selectionné automatiqement est : $chiffre_arabe" 
+
+fi
+
+
 
 chiffre_romain=""
 chiffre_tampon=0
  
-echo le chiffre arabe est  $chiffre_arabe 
-
 
 #Boucle itérative pour traiter les miliers
 
@@ -106,3 +143,14 @@ case $chiffre_tampon in
 	1) chiffre_romain=$chiffre_romain"I" ;;
 esac
 echo dont le chiffre romain est : $chiffre_romain
+echo "voulez vous relancer le script ? (taper o pour oui - n pour non + entrer)"
+read choix
+
+if [ $choix == o ];
+then
+	./chiffre_romain.sh
+elif [ $choix == n ];
+then
+	echo "merci et à bientôt"
+
+fi
