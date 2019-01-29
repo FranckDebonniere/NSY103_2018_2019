@@ -38,7 +38,7 @@ then
 lg_chiffre_arabe="${1:-8}"
 chiffre_arabe=""
 
-#Liste des caractères utilisables pour le mot de passe.
+#Liste des caractères autorisés pour le chiffre arabe automatique.
 caracteres="0123456789"
 
 #Nombre de caracteres dans la liste de ceux autorises.
@@ -51,7 +51,7 @@ do
         #tirer une valeur aleatoire entre 1 et le nombre de caracteres dans la liste autorisee.
         n=$((1 + ${RANDOM} % ${nb_caracteres}))
 
-        #Ajouter dans le mot de passe le n-ieme caractere.
+        #Ajouter dans la variable chiffre arabe le n-ieme caractere.
         chiffre_arabe="${chiffre_arabe}${caracteres:$n:1}"
 
         i=$((i + 1))
@@ -101,7 +101,7 @@ esac
 
 #Boucle iterative pour traiter les dizaines
 #Décrementation de la variable chiffre_arabe et incrémentation de la variable chiffre tampon
-#
+#Initialisation de la variable tampon à 0
 	chiffre_tampon=0
 
 while [ $chiffre_arabe -ge 10 ];
@@ -126,7 +126,8 @@ esac
 
 #Boucle iterative pour traiter les nombres
 #Décrementation de la variable chiffre_arabe et incrémentation de la variable chiffre tampon
-#
+#Initialisation de la variable tampon à 0
+
 	chiffre_tampon=0
 
 while [ $chiffre_arabe -ge 1 ];
@@ -148,7 +149,11 @@ case $chiffre_tampon in
 	2) chiffre_romain=$chiffre_romain"II" ;;
 	1) chiffre_romain=$chiffre_romain"I" ;;
 esac
+
+#Affichage du resultat
 echo dont le chiffre romain est : $chiffre_romain
+
+#
 echo "voulez vous relancer le script ? (taper o pour oui - n pour non + entrer)"
 read choix
 
