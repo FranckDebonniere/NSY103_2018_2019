@@ -9,21 +9,27 @@ read  choix
 if [ $choix == 1 ];
 then
 
+read -p 'saisissez un chiffre (uniquement des entiers - max 8 caractères) :' chiffre_arabe
 
-read -p "tapez votre chiffre (max 8 caractères) : " chiffre_arabe
-
-while [[ ${chiffre} =~ ^[0-9]+$  ]];
-do 
-	read -p 'saisissez uniquement des entiers :' chiffre_arabe
-done
-
-while (( ${#chiffre_arabe}>8))
+test=faux
+while [ $test == faux ];
 do
-	if  (( ${#chiffre_arabe}>8));then
-	echo La longueur de votre chiffre est supérieure à 8 caractères
-	read -p "tapez votre chiffre (max 8 caractères) : " chiffre_arabe
+	if [[ ${#chiffre_arabe} -gt 8 ]];
+	then
+		test=faux
+		echo "votre saisie comporte trop de caratères"
+		read -p 'saisissez un chiffre (max 8 digits) :' chiffre_arabe
+	elif [[ "$chiffre_arabe" != +([0-9]) ]];
+	then
+		test=faux
+		echo "votre saisie comporte des caractères non autorisés"
+		read -p 'saisissez un chiffre avec des entiers :' chiffre_arabe
+	
+	else 
+	
+		test=vrai
+	fi
 
-fi
 done
 
 elif [ $choix == 2 ]
