@@ -55,7 +55,7 @@ do
         i=$((i + 1))
 done
 
-echo "le chiffre arabe selectionné automatiqement est : $chiffre_arabe" 
+echo "le chiffre arabe selectionné automatiquement est : $chiffre_arabe" 
 
 fi
 
@@ -148,7 +148,9 @@ case $chiffre_tampon in
 esac
 
 #Affichage du resultat
-echo dont le chiffre romain est : $chiffre_romain
+echo \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+echo	le chiffre romain est : $chiffre_romain
+echo \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
 #
 echo "voulez vous relancer le script ? (taper o pour oui - n pour non + entrer)"
